@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="400" viewBox="0 0 680 400">
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="240" y="15" width="200" height="95" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="340.0" y="42.375" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">USER</text>
+<text x="340.0" y="57.9" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">user_id (PK), name, email,</text>
+<text x="340.0" y="73.425" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">password_hash, department,</text>
+<text x="340.0" y="88.95" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">created_at, role</text>
+<circle cx="340" cy="165" r="18" fill="#fff" stroke="#2f5d7c" stroke-width="1.6"/>
+<text x="340" y="171" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">d</text>
+<line x1="336" y1="110" x2="336" y2="147" stroke="#2f5d7c" stroke-width="1.5"/>
+<line x1="344" y1="110" x2="344" y2="147" stroke="#2f5d7c" stroke-width="1.5"/>
+<polyline points="340,183 340,203" fill="none" stroke="#2f5d7c" stroke-width="1.5" stroke-linejoin="round"/>
+<polyline points="150,203 530,203" fill="none" stroke="#2f5d7c" stroke-width="1.5" stroke-linejoin="round"/>
+<polyline points="150,203 150,235" fill="none" stroke="#2f5d7c" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M142,214 q8,9 16,0" fill="none" stroke="#2f5d7c" stroke-width="1.6"/>
+<rect x="60" y="235" width="180" height="55" rx="8" fill="#fff" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="150.0" y="257.7" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">STUDENT</text>
+<text x="150.0" y="273.9" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">role = 'student'</text>
+<polyline points="340,203 340,235" fill="none" stroke="#2f5d7c" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M332,214 q8,9 16,0" fill="none" stroke="#2f5d7c" stroke-width="1.6"/>
+<rect x="250" y="235" width="180" height="55" rx="8" fill="#fff" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="340.0" y="257.7" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">LAB STAFF</text>
+<text x="340.0" y="273.9" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">role = 'lab_staff'</text>
+<polyline points="530,203 530,235" fill="none" stroke="#2f5d7c" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M522,214 q8,9 16,0" fill="none" stroke="#2f5d7c" stroke-width="1.6"/>
+<rect x="440" y="235" width="180" height="55" rx="8" fill="#fff" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="530.0" y="257.7" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">ADMIN</text>
+<text x="530.0" y="273.9" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">role = 'admin'</text>
+<rect x="20" y="310" width="640" height="80" rx="8" fill="#f6f7f9" stroke="#c9d0d8" stroke-width="1.2"/>
+<text x="34" y="333" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11.2" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">d = disjoint (an account has exactly one role); double line = total (every account has a role).</text>
+<text x="34" y="350" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11.2" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">Defining attribute: role. Subclasses have no extra attributes, so the relational schema</text>
+<text x="34" y="367" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11.2" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">uses ONE users table with role ENUM('student','lab_staff','admin'), not three subtype tables.</text>
+</svg>

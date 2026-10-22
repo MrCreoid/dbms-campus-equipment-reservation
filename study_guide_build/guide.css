@@ -1,0 +1,171 @@
+/* Print stylesheet for the study guide (rendered by WeasyPrint). */
+:root {
+  --ink: #1f2933; --muted: #5b6775; --line: #d5dbe1; --soft: #f4f6f8;
+  --navy: #1f3a4d; --blue: #2f5d7c; --green: #2b6a3a; --amber: #8a6212; --red: #8a2f2f; --purple: #6b5591;
+  --orange: #a8641f; --teal: #2b7a78;
+}
+
+@page {
+  size: A4;
+  margin: 21mm 17mm 19mm 17mm;
+  @top-left { content: string(chapter); font: 600 8pt "Avenir Next"; color: #5b6775; }
+  @top-right { content: "Campus Equipment · DBMS Study Guide"; font: 500 8pt "Avenir Next"; color: #8a949e; }
+  @bottom-center { content: counter(page); font: 600 8.5pt "Avenir Next"; color: #5b6775; }
+  @bottom-right { content: ""; }
+}
+@page :first { margin: 0; @top-left { content: none; } @top-right { content: none; } @bottom-center { content: none; } }
+@page landscape { size: A4 landscape; margin: 15mm 17mm 14mm 17mm; }
+
+html { font-family: "Charter", "Georgia", serif; font-size: 10.2pt; line-height: 1.5; color: var(--ink); }
+body { margin: 0; }
+
+h1, h2, h3, .kicker, th, figcaption, .stack, .toc, .callout strong:first-child { font-family: "Avenir Next", "Helvetica Neue", sans-serif; }
+
+h1 {
+  break-before: page; string-set: chapter content(text);
+  font-size: 21pt; font-weight: 700; color: var(--navy); margin: 0 0 5mm; padding-bottom: 3mm;
+  border-bottom: 2.5pt solid var(--navy); line-height: 1.2;
+}
+h1 .num {
+  display: inline-block; background: var(--navy); color: #fff; font-size: 15pt; min-width: 9mm;
+  text-align: center; border-radius: 2mm; padding: 0.5mm 2mm; margin-right: 2mm; vertical-align: 2pt;
+}
+h2 { font-size: 13.5pt; font-weight: 700; color: var(--blue); margin: 7mm 0 2.5mm; break-after: avoid; }
+h2 .num { color: #8aa3b5; margin-right: 1.5mm; }
+h3 { font-size: 11pt; color: var(--navy); margin: 4mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2.6mm; text-align: left; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+li { margin-bottom: 1mm; }
+a { color: var(--blue); text-decoration: none; }
+strong { color: #111a22; }
+
+code { font-family: "Menlo", monospace; font-size: 8.3pt; background: #eef1f4; padding: 0.2mm 1mm; border-radius: 1mm; color: #243b4f; }
+pre { margin: 0; }
+.code {
+  background: #f6f8fa; border: 0.6pt solid var(--line); border-left: 3pt solid var(--orange);
+  border-radius: 1.5mm; padding: 2.6mm 3.2mm; margin: 2mm 0 3.5mm; break-inside: avoid;
+}
+.code pre { font-family: "Menlo", monospace; font-size: 7.7pt; line-height: 1.45; white-space: pre-wrap; }
+.code code { background: none; padding: 0; font-size: inherit; color: inherit; }
+
+table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 8.8pt; line-height: 1.35; }
+table.schema { table-layout: fixed; }
+table.schema th:nth-child(1) { width: 17%; } table.schema th:nth-child(2) { width: 23%; }
+table.schema th:nth-child(3) { width: 23%; } table.schema th:nth-child(4) { width: 27%; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: var(--navy); color: #fff; font-size: 8pt; font-weight: 600; text-align: left; padding: 1.6mm 2mm; }
+td { border-bottom: 0.5pt solid var(--line); padding: 1.5mm 2mm; vertical-align: top; }
+tbody tr:nth-child(even) td { background: #f7f9fa; }
+td code { font-size: 7.6pt; white-space: normal; }
+td:first-child code { white-space: nowrap; }
+
+figure { margin: 3mm 0 5mm; text-align: center; break-inside: avoid; }
+figure img { width: 92%; }
+figure.tall img { width: 80%; }
+figcaption { font-size: 8.3pt; color: var(--muted); margin-top: 1.5mm; text-align: center; }
+
+.callout {
+  border-radius: 1.8mm; padding: 2.8mm 3.6mm; margin: 2.5mm 0 4mm; break-inside: avoid;
+  border: 0.6pt solid; border-left-width: 3pt;
+}
+.callout p:last-child, .callout ul:last-child, .callout ol:last-child { margin-bottom: 0; }
+.callout.note { background: #eef4f8; border-color: #b8cddc; border-left-color: var(--blue); }
+.callout.key { background: #edf6ef; border-color: #bcd9c3; border-left-color: var(--green); }
+.callout.warn { background: #fdf6e7; border-color: #ead3a3; border-left-color: #b7841f; }
+.callout.limit { background: #fbefef; border-color: #e3bdbd; border-left-color: var(--red); }
+.callout.sqlbox { background: #fbf3ea; border-color: #e6cfb5; border-left-color: var(--orange); }
+.callout.pybox { background: #eef4f8; border-color: #b8cddc; border-left-color: var(--blue); }
+
+.two-col { display: table; width: 100%; border-spacing: 4mm 0; margin: 0 -4mm; table-layout: fixed; }
+.two-col > div { display: table-cell; vertical-align: top; }
+.two-col > div > .callout, .two-col > div > table { margin-top: 0; }
+.two-col table { font-size: 8.3pt; }
+
+.feature-grid { margin: 2mm 0 4mm; column-count: 2; column-gap: 4mm; }
+.feature {
+  display: block; box-sizing: border-box; margin: 0 0 3.5mm; break-inside: avoid;
+  padding: 3mm 3.5mm; border-radius: 1.8mm; border-top: 3pt solid; background: var(--soft); font-size: 9.2pt;
+}
+.feature p { margin: 0; }
+.f-equipment { border-color: var(--orange); }
+.f-reservations { border-color: var(--teal); }
+.f-maintenance { border-color: var(--red); }
+.f-users { border-color: var(--blue); }
+
+.rule-box {
+  border: 1.2pt solid var(--navy); border-radius: 2mm; padding: 3mm 4mm; margin: 2mm 0 4mm; background: #f3f6f9;
+  break-inside: avoid;
+}
+.rule-box ol { margin-bottom: 0; }
+
+.fn { border-left: 3pt solid var(--blue); background: #f5f8fa; padding: 2.2mm 3.2mm; margin: 0 0 2.6mm; break-inside: avoid; font-size: 9.4pt; }
+.fn p { margin: 0; }
+
+/* Viva questions */
+h3.q { font-size: 10.2pt; color: var(--navy); margin: 3.4mm 0 0.8mm; padding-left: 2.5mm; border-left: 2.5pt solid var(--amber); }
+h3.q + p { margin-left: 3.2mm; font-size: 9.6pt; }
+
+/* Landscape ER page */
+.landscape { page: landscape; }
+.landscape figure.er img { width: 100%; }
+.landscape h1 { margin-bottom: 3mm; }
+
+/* Cover */
+.cover { height: 297mm; position: relative; background: #fff; page-break-after: always; }
+.cover-band { background: var(--navy); color: #fff; padding: 46mm 22mm 16mm; }
+.kicker { letter-spacing: 0.12em; text-transform: uppercase; font-size: 9pt; color: #a9c1d3; margin: 0 0 6mm; font-weight: 600; }
+.cover-title {
+  break-before: auto; string-set: none; border: none; color: #fff; font-size: 30pt; line-height: 1.12;
+  margin: 0; padding: 0; font-weight: 700;
+}
+.cover-sub { font-family: "Avenir Next", sans-serif; font-size: 17pt; color: #d3e0ea; margin: 3mm 0 0; }
+.cover-body { padding: 14mm 22mm 0; }
+.lead { font-size: 12pt; line-height: 1.55; color: #2a3641; margin-bottom: 8mm; }
+.stack span {
+  display: inline-block; font-size: 8.5pt; font-weight: 600; color: var(--navy); background: #e8eef3;
+  border-radius: 10mm; padding: 1.2mm 3.5mm; margin: 0 1.5mm 2mm 0;
+}
+.tables-strip { margin: 10mm 0 8mm; }
+.tables-strip .t {
+  display: inline-block; width: 30.6%; margin: 0 1.6% 2.6mm 0; box-sizing: border-box; padding: 3mm 3mm;
+  font: 600 9.5pt "Menlo", monospace; color: #fff; border-radius: 1.6mm; text-align: center;
+}
+.t-users { background: #2f5d7c; } .t-labs { background: #3d7a5a; } .t-categories { background: #6b5591; }
+.t-equipment { background: #a8641f; } .t-reservations { background: #2b7a78; } .t-maintenance { background: #a33a3a; }
+.cover-note { font-size: 9pt; color: var(--muted); }
+.cover-foot {
+  position: absolute; bottom: 16mm; left: 22mm; right: 22mm; font: 500 9pt "Avenir Next"; color: var(--muted);
+  border-top: 0.6pt solid var(--line); padding-top: 3mm; margin: 0;
+}
+
+/* Contents */
+.toc-title { break-before: auto; string-set: none; }
+.toc ul { list-style: none; padding: 0; margin: 0; }
+.toc li { margin: 0; }
+.toc a { color: var(--ink); display: block; }
+.toc a::after { content: leader(".") target-counter(attr(href), page); color: var(--muted); }
+.toc .toc-1 { font-weight: 700; font-size: 10.6pt; margin-top: 2.6mm; color: var(--navy); }
+.toc .toc-1 a { color: var(--navy); }
+.toc .toc-2 { font-size: 9pt; padding-left: 9mm; margin-top: 0.6mm; }
+.toc .num { display: inline-block; min-width: 8mm; color: var(--blue); }
+.toc .toc-2 .num { color: #8a949e; min-width: 9mm; }
+
+/* Cheat sheet */
+.cheat-grid { font-size: 8.7pt; line-height: 1.42; column-count: 2; column-gap: 3.5mm; }
+.cheat {
+  display: block; box-sizing: border-box; margin: 0 0 3mm;
+  padding: 2.6mm 3mm; border-radius: 1.6mm; border-top: 2.5pt solid; background: var(--soft); break-inside: avoid;
+}
+.cheat.wide { column-span: all; }
+.cheat p { margin: 0 0 1.4mm; }
+.cheat img { width: 82%; display: block; margin: 0 auto 1mm; }
+.cheat .code { margin: 1mm 0 0; padding: 1.8mm 2.4mm; }
+.cheat .code pre { font-size: 7.2pt; }
+.c-blue { border-color: var(--blue); } .c-grey { border-color: #6b7783; } .c-orange { border-color: var(--orange); }
+.c-green { border-color: var(--green); } .c-red { border-color: var(--red); } .c-purple { border-color: var(--purple); }
+
+.cheat ol.ten { column-count: 2; column-gap: 6mm; margin: 0; padding-left: 5mm; }
+.cover-stats { margin: 0 0 9mm; border-top: 0.6pt solid var(--line); border-bottom: 0.6pt solid var(--line); padding: 4mm 0; }
+.cover-stats div { display: inline-block; width: 24%; text-align: center; font: 500 8.5pt "Avenir Next"; color: var(--muted); }
+.cover-stats b { display: block; font: 700 20pt "Avenir Next"; color: var(--navy); }

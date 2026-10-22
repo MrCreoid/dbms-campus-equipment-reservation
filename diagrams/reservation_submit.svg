@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="420" viewBox="0 0 680 420">
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="170" y="10" width="280" height="44" rx="8" fill="#eef0f3" stroke="#4a5561" stroke-width="1.4"/>
+<text x="310.0" y="27.599999999999998" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#4a5561" text-anchor="middle" xml:space="preserve">POST /reservations</text>
+<text x="310.0" y="42.45" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">equipment_id, start_time, end_time, purpose</text>
+<polyline points="310,54 310,70" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="310,70 306.7,62.7 313.3,62.7" fill="#5b6775"/>
+<rect x="170" y="72" width="280" height="40" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="310.0" y="95.1625" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">validate_slot(start, end, now)</text>
+<polyline points="450,92 473,92" fill="none" stroke="#8a2f2f" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="473,92 465.7,95.3 465.7,88.7" fill="#8a2f2f"/>
+<rect x="475" y="74" width="200" height="36" rx="8" fill="#f7e2e2" stroke="#8a2f2f" stroke-width="1.4"/>
+<text x="575.0" y="94.75" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">missing, end ≤ start, or past</text>
+<polyline points="310,112 310,126" fill="none" stroke="#2b6a3a" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="310,126 306.7,118.7 313.3,118.7" fill="#2b6a3a"/>
+<text x="317" y="123" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#2b6a3a" text-anchor="start" xml:space="preserve">ok</text>
+<rect x="170" y="128" width="280" height="40" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="310.0" y="151.16250000000002" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">purpose not empty</text>
+<polyline points="450,148 473,148" fill="none" stroke="#8a2f2f" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="473,148 465.7,151.3 465.7,144.7" fill="#8a2f2f"/>
+<rect x="475" y="130" width="200" height="36" rx="8" fill="#f7e2e2" stroke="#8a2f2f" stroke-width="1.4"/>
+<text x="575.0" y="150.75" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">'Please describe the purpose…'</text>
+<polyline points="310,168 310,182" fill="none" stroke="#2b6a3a" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="310,182 306.7,174.7 313.3,174.7" fill="#2b6a3a"/>
+<text x="317" y="179" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#2b6a3a" text-anchor="start" xml:space="preserve">ok</text>
+<rect x="170" y="184" width="280" height="40" rx="8" fill="#f8eee2" stroke="#a8641f" stroke-width="1.4"/>
+<text x="310.0" y="207.16250000000002" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">equipment.status = 'active' ?</text>
+<polyline points="450,204 473,204" fill="none" stroke="#8a2f2f" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="473,204 465.7,207.3 465.7,200.7" fill="#8a2f2f"/>
+<rect x="475" y="186" width="200" height="36" rx="8" fill="#f7e2e2" stroke="#8a2f2f" stroke-width="1.4"/>
+<text x="575.0" y="206.75" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">'…retired and cannot be booked'</text>
+<polyline points="310,224 310,238" fill="none" stroke="#2b6a3a" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="310,238 306.7,230.7 313.3,230.7" fill="#2b6a3a"/>
+<text x="317" y="235" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#2b6a3a" text-anchor="start" xml:space="preserve">ok</text>
+<rect x="170" y="240" width="280" height="40" rx="8" fill="#f8eee2" stroke="#a8641f" stroke-width="1.4"/>
+<text x="310.0" y="263.1625" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">unresolved maintenance = 0 ?</text>
+<polyline points="450,260 473,260" fill="none" stroke="#8a2f2f" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="473,260 465.7,263.3 465.7,256.7" fill="#8a2f2f"/>
+<rect x="475" y="242" width="200" height="36" rx="8" fill="#f7e2e2" stroke="#8a2f2f" stroke-width="1.4"/>
+<text x="575.0" y="262.75" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">'…unresolved maintenance issue'</text>
+<polyline points="310,280 310,294" fill="none" stroke="#2b6a3a" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="310,294 306.7,286.7 313.3,286.7" fill="#2b6a3a"/>
+<text x="317" y="291" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#2b6a3a" text-anchor="start" xml:space="preserve">ok</text>
+<rect x="170" y="296" width="280" height="40" rx="8" fill="#f8eee2" stroke="#a8641f" stroke-width="1.4"/>
+<text x="310.0" y="319.1625" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">overlapping APPROVED = 0 ?</text>
+<polyline points="450,316 473,316" fill="none" stroke="#8a2f2f" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="473,316 465.7,319.3 465.7,312.7" fill="#8a2f2f"/>
+<rect x="475" y="298" width="200" height="36" rx="8" fill="#f7e2e2" stroke="#8a2f2f" stroke-width="1.4"/>
+<text x="575.0" y="318.75" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">'…overlaps an approved reservation'</text>
+<polyline points="310,336 310,350" fill="none" stroke="#2b6a3a" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="310,350 306.7,342.7 313.3,342.7" fill="#2b6a3a"/>
+<text x="317" y="347" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="600" fill="#2b6a3a" text-anchor="start" xml:space="preserve">ok</text>
+<rect x="170" y="352" width="280" height="50" rx="8" fill="#e3f1e6" stroke="#2b6a3a" stroke-width="1.4"/>
+<text x="310.0" y="372.40000000000003" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#2b6a3a" text-anchor="middle" xml:space="preserve">INSERT INTO reservations</text>
+<text x="310.0" y="387.925" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">status defaults to 'pending'</text>
+<text x="20" y="90" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="700" fill="#2f5d7c" text-anchor="start" xml:space="preserve">Python</text>
+<text x="20" y="106" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="700" fill="#2f5d7c" text-anchor="start" xml:space="preserve">checks</text>
+<text x="20" y="205" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="700" fill="#a8641f" text-anchor="start" xml:space="preserve">SQL checks in</text>
+<text x="20" y="221" font-family="Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#a8641f" text-anchor="start" xml:space="preserve">booking_problem()</text>
+<text x="20" y="380" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#8a2f2f" text-anchor="start" xml:space="preserve">error → flash + back</text>
+<text x="20" y="395" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#8a2f2f" text-anchor="start" xml:space="preserve">to the item page</text>
+</svg>

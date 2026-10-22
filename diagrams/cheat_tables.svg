@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="262" viewBox="0 0 680 262">
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="480" y="110" width="150" height="52" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="555.0" y="139.3" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">users</text>
+<rect x="20" y="30" width="150" height="52" rx="8" fill="#e6f1ea" stroke="#3d7a5a" stroke-width="1.4"/>
+<text x="95.0" y="59.3" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#3d7a5a" text-anchor="middle" xml:space="preserve">labs</text>
+<rect x="20" y="190" width="150" height="52" rx="8" fill="#eeeaf5" stroke="#6b5591" stroke-width="1.4"/>
+<text x="95.0" y="219.3" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#6b5591" text-anchor="middle" xml:space="preserve">categories</text>
+<rect x="200" y="110" width="150" height="52" rx="8" fill="#f8eee2" stroke="#a8641f" stroke-width="1.4"/>
+<text x="275.0" y="139.3" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#a8641f" text-anchor="middle" xml:space="preserve">equipment</text>
+<rect x="330" y="20" width="150" height="52" rx="8" fill="#e3f2f1" stroke="#2b7a78" stroke-width="1.4"/>
+<text x="405.0" y="49.3" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#2b7a78" text-anchor="middle" xml:space="preserve">reservations</text>
+<rect x="330" y="205" width="180" height="52" rx="8" fill="#f7e6e6" stroke="#a33a3a" stroke-width="1.4"/>
+<text x="420.0" y="234.3" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#a33a3a" text-anchor="middle" xml:space="preserve">maintenance_records</text>
+<polyline points="170,56 200,120" fill="none" stroke="#1f2933" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="200,120 193.9,114.8 199.9,112.0" fill="#1f2933"/>
+<polyline points="170,216 200,150" fill="none" stroke="#1f2933" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="200,150 199.9,158.0 194.0,155.3" fill="#1f2933"/>
+<polyline points="350,125 380,74" fill="none" stroke="#1f2933" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="380,74 379.1,82.0 373.5,78.6" fill="#1f2933"/>
+<polyline points="350,150 380,203" fill="none" stroke="#1f2933" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="380,203 373.6,198.2 379.2,195.0" fill="#1f2933"/>
+<polyline points="520,110 450,74" fill="none" stroke="#1f2933" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="450,74 458.0,74.4 455.0,80.2" fill="#1f2933"/>
+<polyline points="520,162 480,203" fill="none" stroke="#1f2933" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="480,203 482.8,195.5 487.4,200.0" fill="#1f2933"/>
+<rect x="172.6" y="70" width="24.8" height="14.5" rx="3" fill="#fff" stroke="#fff" stroke-width="0"/>
+<text x="185" y="80" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="700" fill="#1f3a4d" text-anchor="middle" xml:space="preserve">1:N</text>
+<rect x="172.6" y="185" width="24.8" height="14.5" rx="3" fill="#fff" stroke="#fff" stroke-width="0"/>
+<text x="185" y="195" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="700" fill="#1f3a4d" text-anchor="middle" xml:space="preserve">1:N</text>
+<rect x="359.6" y="90" width="24.8" height="14.5" rx="3" fill="#fff" stroke="#fff" stroke-width="0"/>
+<text x="372" y="100" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="700" fill="#1f3a4d" text-anchor="middle" xml:space="preserve">1:N</text>
+<rect x="359.6" y="175" width="24.8" height="14.5" rx="3" fill="#fff" stroke="#fff" stroke-width="0"/>
+<text x="372" y="185" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="700" fill="#1f3a4d" text-anchor="middle" xml:space="preserve">1:N</text>
+<rect x="499.2" y="74" width="41.6" height="14.5" rx="3" fill="#fff" stroke="#fff" stroke-width="0"/>
+<text x="520" y="84" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="700" fill="#1f3a4d" text-anchor="middle" xml:space="preserve">1:N ×2</text>
+<rect x="514.2" y="178" width="41.6" height="14.5" rx="3" fill="#fff" stroke="#fff" stroke-width="0"/>
+<text x="535" y="188" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="700" fill="#1f3a4d" text-anchor="middle" xml:space="preserve">1:N ×2</text>
+</svg>

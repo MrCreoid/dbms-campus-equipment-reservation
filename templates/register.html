@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<section class="auth card">
+  <h1>Create a student account</h1>
+  <p class="muted">Lab staff and administrator accounts are created by the lab office.</p>
+  <form method="post" class="stack">
+    <label>Full name <input name="name" value="{{ request.form.name }}" required maxlength="100"></label>
+    <label>Email <input type="email" name="email" value="{{ request.form.email }}" required maxlength="120"></label>
+    <label>Department <input name="department" value="{{ request.form.department }}" required maxlength="100"></label>
+    <label>Password <input type="password" name="password" required minlength="8"></label>
+    <button>Register</button>
+  </form>
+  <p class="muted">Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+</section>
+{% endblock %}

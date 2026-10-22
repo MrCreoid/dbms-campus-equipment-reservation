@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Maintenance{% endblock %}
+{% block content %}
+<h1>Maintenance ledger</h1>
+
+<section class="card">
+  <h2>Report an issue</h2>
+  <form method="post" action="{{ url_for('maintenance_report') }}" class="inline">
+    <select name="equipment_id" required>
+      <option value="">Choose equipment…</option>
+      {% for e in equipment %}<option value="{{ e.equipment_id }}">{{ e.equipment_name }} ({{ e.asset_tag }})</option>{% endfor %}
+    </select>
+    <input name="issue" required placeholder="Describe the problem">
+    <button>Report</button>
+  </form>
+</section>
+
+<form class="filters" method="get">
+  <label>Show
+    <select name="status" onchange="this.form.submit()">
+      <option value="">All records</option>
+      {% for s in order %}<option value="{{ s }}" {% if s == status %}selected{% endif %}>{{ s|replace('_', ' ') }}</option>{% endfor %}
+    </select>
+  </label>
+  <noscript><button>Apply</button></noscript>
+</form>
+
+<section class="card">
+  {% if records %}
+  <table>
+    <thead><tr><th>Equipment</th><th>Issue</th><th>Status</th><th>Reported</th><th>Handled by</th><th>Action taken / update</th></tr></thead>
+    <tbody>
+    {% for m in records %}
+    <tr>
+      <td><a href="{{ url_for('equipment_detail', equipment_id=m.equipment_id) }}">{{ m.equipment_name }}</a> <span class="tag">{{ m.asset_tag }}</span></td>
+      <td>{{ m.issue }}</td>
+      <td><span class="badge {{ m.status }}">{{ m.status|replace('_', ' ') }}</span></td>
+      <td>{{ m.reported_at|when }}<div class="muted small">by {{ m.reporter }}</div></td>
+      <td>{{ m.handler or '—' }}</td>
+      <td>
+        {% if m.status == 'resolved' %}
+          {{ m.action_taken }}<div class="muted small">Resolved {{ m.resolved_at|when }}</div>
+        {% else %}
+        <form method="post" action="{{ url_for('maintenance_update', maintenance_id=m.maintenance_id) }}" class="inline">
+          <input name="action_taken" value="{{ m.action_taken or '' }}" placeholder="Action taken">
+          <select name="status">
+            {% if m.status == 'open' %}<option value="in_progress">In progress</option>{% endif %}
+            <option value="resolved">Resolved</option>
+          </select>
+          <button class="small">Update</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No maintenance records{% if status %} with this status{% endif %}.</p>
+  {% endif %}
+</section>
+{% endblock %}

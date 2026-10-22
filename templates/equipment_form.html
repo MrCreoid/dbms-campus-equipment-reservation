@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if item else 'Add' }} equipment{% endblock %}
+{% block content %}
+{% set f = request.form if request.method == 'POST' else (item or {}) %}
+<h1>{{ 'Edit ' ~ item.asset_tag if item else 'Add equipment' }}</h1>
+<section class="card narrow">
+  {% if not labs or not categories %}
+  <p class="empty">Add at least one laboratory and one category on the <a href="{{ url_for('admin') }}">Admin page</a> first.</p>
+  {% else %}
+  <form method="post" class="stack">
+    <label>Asset tag <input name="asset_tag" value="{{ f.asset_tag or '' }}" required maxlength="30"></label>
+    <label>Name <input name="equipment_name" value="{{ f.equipment_name or '' }}" required maxlength="150"></label>
+    <label>Category
+      <select name="category_id" required>
+        {% for c in categories %}<option value="{{ c.category_id }}" {% if c.category_id|string == f.category_id|string %}selected{% endif %}>{{ c.category_name }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>Laboratory
+      <select name="lab_id" required>
+        {% for l in labs %}<option value="{{ l.lab_id }}" {% if l.lab_id|string == f.lab_id|string %}selected{% endif %}>{{ l.lab_name }} ({{ l.building }}, {{ l.room_no }})</option>{% endfor %}
+      </select>
+    </label>
+    <label>Details <textarea name="details" rows="3">{{ f.details or '' }}</textarea></label>
+    <label>Purchase date <input type="date" name="purchase_date" value="{{ f.purchase_date or '' }}"></label>
+    {% if item %}
+    <label>Status
+      <select name="status">
+        <option value="active" {% if f.status == 'active' %}selected{% endif %}>Active</option>
+        <option value="retired" {% if f.status == 'retired' %}selected{% endif %}>Retired (cannot be booked)</option>
+      </select>
+    </label>
+    {% endif %}
+    <div class="row">
+      <button>Save</button>
+      <a href="{{ url_for('equipment_detail', equipment_id=item.equipment_id) if item else url_for('equipment_list') }}">Cancel</a>
+    </div>
+  </form>
+  {% endif %}
+</section>
+{% endblock %}

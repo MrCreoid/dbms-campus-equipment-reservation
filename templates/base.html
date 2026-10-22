@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %} · Campus Equipment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('dashboard') }}">Campus Equipment</a>
+  {% if g.user %}
+  <nav>
+    {% set ep = request.endpoint or '' %}
+    <a href="{{ url_for('dashboard') }}" {% if ep == 'dashboard' %}class="active"{% endif %}>Dashboard</a>
+    <a href="{{ url_for('equipment_list') }}" {% if ep.startswith('equipment') %}class="active"{% endif %}>Equipment</a>
+    <a href="{{ url_for('reservations') }}" {% if ep.startswith('reservation') %}class="active"{% endif %}>Reservations</a>
+    {% if g.user.role in ('lab_staff', 'admin') %}
+    <a href="{{ url_for('maintenance') }}" {% if ep.startswith('maintenance') %}class="active"{% endif %}>Maintenance</a>
+    <a href="{{ url_for('reports') }}" {% if ep == 'reports' %}class="active"{% endif %}>Reports</a>
+    {% endif %}
+    {% if g.user.role == 'admin' %}
+    <a href="{{ url_for('admin') }}" {% if ep == 'admin' %}class="active"{% endif %}>Admin</a>
+    {% endif %}
+  </nav>
+  <div class="who">
+    <span>{{ g.user.name }} <span class="badge role">{{ g.user.role|replace('_', ' ') }}</span></span>
+    <form method="post" action="{{ url_for('logout') }}"><button class="link">Log out</button></form>
+  </div>
+  {% endif %}
+</header>
+<main>
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+  <div class="flash {{ category }}">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

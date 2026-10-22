@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="420" viewBox="0 0 680 420">
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="250" y="15" width="180" height="50" rx="8" fill="#eef0f3" stroke="#4a5561" stroke-width="1.4"/>
+<text x="340.0" y="35.199999999999996" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#4a5561" text-anchor="middle" xml:space="preserve">Browser</text>
+<text x="340.0" y="51.4" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">user clicks / forms</text>
+<rect x="250" y="120" width="180" height="70" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="340.0" y="142.1" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">app.py</text>
+<text x="340.0" y="158.3" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">routes, rules, SQL</text>
+<text x="340.0" y="174.5" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">flask --app app run</text>
+<rect x="20" y="110" width="170" height="90" rx="8" fill="#eef0f3" stroke="#4a5561" stroke-width="1.4"/>
+<text x="105.0" y="143.17499999999998" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#4a5561" text-anchor="middle" xml:space="preserve">templates/ + static/</text>
+<text x="105.0" y="158.02499999999998" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">12 Jinja .html pages</text>
+<text x="105.0" y="172.875" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">style.css</text>
+<rect x="490" y="110" width="170" height="90" rx="8" fill="#f8eee2" stroke="#a8641f" stroke-width="1.4"/>
+<text x="575.0" y="135.75" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#a8641f" text-anchor="middle" xml:space="preserve">reports.sql</text>
+<text x="575.0" y="150.6" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">6 named report</text>
+<text x="575.0" y="165.45" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">queries, loaded by</text>
+<text x="575.0" y="180.3" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">load_reports()</text>
+<rect x="250" y="245" width="180" height="55" rx="8" fill="#eeeaf5" stroke="#6b5591" stroke-width="1.4"/>
+<text x="340.0" y="267.7" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#6b5591" text-anchor="middle" xml:space="preserve">db.py</text>
+<text x="340.0" y="283.9" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">get_connection()</text>
+<rect x="20" y="245" width="170" height="55" rx="8" fill="#eef0f3" stroke="#4a5561" stroke-width="1.4"/>
+<text x="105.0" y="268.09999999999997" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#4a5561" text-anchor="middle" xml:space="preserve">.env</text>
+<text x="105.0" y="282.95" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">DB_* and SECRET_KEY</text>
+<rect x="250" y="345" width="180" height="60" rx="8" fill="#f8eee2" stroke="#a8641f" stroke-width="1.4"/>
+<text x="340.0" y="370.2" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#a8641f" text-anchor="middle" xml:space="preserve">MySQL</text>
+<text x="340.0" y="386.4" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">campus_equipment</text>
+<rect x="20" y="345" width="170" height="60" rx="8" fill="#f8eee2" stroke="#a8641f" stroke-width="1.4"/>
+<text x="105.0" y="370.59999999999997" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#a8641f" text-anchor="middle" xml:space="preserve">schema.sql</text>
+<text x="105.0" y="385.45" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">creates the 6 tables</text>
+<rect x="490" y="245" width="170" height="55" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="575.0" y="268.09999999999997" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">seed.py</text>
+<text x="575.0" y="282.95" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">demo data</text>
+<rect x="490" y="345" width="170" height="60" rx="8" fill="#eef0f3" stroke="#4a5561" stroke-width="1.4"/>
+<text x="575.0" y="370.59999999999997" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#4a5561" text-anchor="middle" xml:space="preserve">tests/test_rules.py</text>
+<text x="575.0" y="385.45" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">unittest, no DB</text>
+<polyline points="340,65 340,118" fill="none" stroke="#1f3a4d" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="340,118 336.7,110.7 343.3,110.7" fill="#1f3a4d"/>
+<text x="348" y="96" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#1f3a4d" text-anchor="start" xml:space="preserve">HTTP</text>
+<polyline points="250,155 192,155" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="192,155 199.3,151.7 199.3,158.3" fill="#5b6775"/>
+<text x="221" y="147" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="500" fill="#5b6775" text-anchor="middle" xml:space="preserve">renders</text>
+<polyline points="430,155 488,155" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="488,155 480.7,158.3 480.7,151.7" fill="#5b6775"/>
+<text x="459" y="147" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="500" fill="#5b6775" text-anchor="middle" xml:space="preserve">reads</text>
+<polyline points="340,190 340,243" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="340,243 336.7,235.7 343.3,235.7" fill="#5b6775"/>
+<text x="348" y="222" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="500" fill="#5b6775" text-anchor="start" xml:space="preserve">imports</text>
+<polyline points="250,272 192,272" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="192,272 199.3,268.7 199.3,275.3" fill="#5b6775"/>
+<text x="221" y="264" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="500" fill="#5b6775" text-anchor="middle" xml:space="preserve">reads</text>
+<polyline points="340,300 340,343" fill="none" stroke="#a8641f" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="340,343 336.7,335.7 343.3,335.7" fill="#a8641f"/>
+<text x="348" y="327" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#a8641f" text-anchor="start" xml:space="preserve">SQL</text>
+<polyline points="190,375 248,375" fill="none" stroke="#a8641f" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="248,375 240.7,378.3 240.7,371.7" fill="#a8641f"/>
+<text x="219" y="367" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="500" fill="#a8641f" text-anchor="middle" xml:space="preserve">import</text>
+<polyline points="490,272 432,272" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="432,272 439.3,268.7 439.3,275.3" fill="#5b6775"/>
+<text x="461" y="264" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="500" fill="#5b6775" text-anchor="middle" xml:space="preserve">imports</text>
+<polyline points="660,375 672,375 672,222 415,222 415,192" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-dasharray="4 3" stroke-linejoin="round"/>
+<polygon points="415,192 418.3,199.3 411.7,199.3" fill="#5b6775"/>
+<rect x="484.18" y="216.5" width="151.64000000000001" height="13.775" rx="3" fill="#fff" stroke="#fff" stroke-width="0"/>
+<text x="560" y="226" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="9.5" font-weight="500" fill="#5b6775" text-anchor="middle" xml:space="preserve">tests import pure functions</text>
+</svg>

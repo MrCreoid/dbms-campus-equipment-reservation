@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Reservations{% endblock %}
+{% block content %}
+<h1>Reservations</h1>
+
+{% if g.user.role in ('lab_staff', 'admin') %}
+<section class="card">
+  <h2>Pending requests</h2>
+  {% if pending %}
+  <table>
+    <thead><tr><th>Requester</th><th>Equipment</th><th>Slot</th><th>Purpose</th><th></th></tr></thead>
+    <tbody>
+    {% for r in pending %}
+    <tr>
+      <td>{{ r.requester }}<div class="muted small">{{ r.email }} · {{ r.department }}</div></td>
+      <td><a href="{{ url_for('equipment_detail', equipment_id=r.equipment_id) }}">{{ r.equipment_name }}</a> <span class="tag">{{ r.asset_tag }}</span></td>
+      <td>{{ r.start_time|when }}<div class="muted small">to {{ r.end_time|when }}</div></td>
+      <td>{{ r.purpose }}</td>
+      <td class="actions">
+        {% if r.user_id != g.user.user_id %}
+        <form method="post" action="{{ url_for('reservation_approve', reservation_id=r.reservation_id) }}"><button class="small">Approve</button></form>
+        <form method="post" action="{{ url_for('reservation_reject', reservation_id=r.reservation_id) }}"><button class="danger small">Reject</button></form>
+        {% else %}<span class="muted small">Your request</span>{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No requests are waiting for review.</p>
+  {% endif %}
+</section>
+
+<section class="card">
+  <h2>Approved bookings</h2>
+  {% if approved %}
+  <table>
+    <thead><tr><th>Requester</th><th>Equipment</th><th>Slot</th><th>Approved by</th><th></th></tr></thead>
+    <tbody>
+    {% for r in approved %}
+    <tr>
+      <td>{{ r.requester }}</td>
+      <td>{{ r.equipment_name }} <span class="tag">{{ r.asset_tag }}</span></td>
+      <td>{{ r.start_time|when }}<div class="muted small">to {{ r.end_time|when }}</div></td>
+      <td>{{ r.reviewer or '—' }}</td>
+      <td class="actions">
+        {% if r.has_ended %}
+        <form method="post" action="{{ url_for('reservation_complete', reservation_id=r.reservation_id) }}"><button class="small">Mark returned</button></form>
+        {% else %}
+        <form method="post" action="{{ url_for('reservation_cancel', reservation_id=r.reservation_id) }}"><button class="danger small">Cancel</button></form>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No approved bookings.</p>
+  {% endif %}
+</section>
+{% endif %}
+
+<section class="card">
+  <h2>My requests</h2>
+  {% if mine %}
+  <table>
+    <thead><tr><th>Equipment</th><th>Slot</th><th>Purpose</th><th>Status</th><th>Reviewed by</th><th></th></tr></thead>
+    <tbody>
+    {% for r in mine %}
+    <tr>
+      <td><a href="{{ url_for('equipment_detail', equipment_id=r.equipment_id) }}">{{ r.equipment_name }}</a> <span class="tag">{{ r.asset_tag }}</span></td>
+      <td>{{ r.start_time|when }}<div class="muted small">to {{ r.end_time|when }}</div></td>
+      <td>{{ r.purpose }}</td>
+      <td><span class="badge {{ r.status }}">{{ r.status }}</span></td>
+      <td>{{ r.reviewer or '—' }}</td>
+      <td class="actions">
+        {% if r.status in ('pending', 'approved') and not r.has_ended %}
+        <form method="post" action="{{ url_for('reservation_cancel', reservation_id=r.reservation_id) }}"><button class="danger small">Cancel</button></form>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">You have not made any requests yet. <a href="{{ url_for('equipment_list') }}">Browse equipment</a></p>
+  {% endif %}
+</section>
+{% endblock %}

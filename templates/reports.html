@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<h1>Reports</h1>
+<p class="muted">Every table on this page runs a query from <code>reports.sql</code>.</p>
+
+<section class="card">
+  <h2>Pending reservation requests</h2>
+  {% if pending %}
+  <table>
+    <thead><tr><th>Requester</th><th>Equipment</th><th>Lab</th><th>Slot</th><th>Purpose</th></tr></thead>
+    <tbody>
+    {% for r in pending %}
+    <tr><td>{{ r.requester }}<div class="muted small">{{ r.department }}</div></td><td>{{ r.equipment_name }} <span class="tag">{{ r.asset_tag }}</span></td>
+      <td>{{ r.lab_name }}</td><td>{{ r.start_time|when }}<div class="muted small">to {{ r.end_time|when }}</div></td><td>{{ r.purpose }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="empty">No pending requests.</p>{% endif %}
+</section>
+
+<section class="card">
+  <h2>Instruments currently under maintenance</h2>
+  {% if under_maintenance %}
+  <table>
+    <thead><tr><th>Equipment</th><th>Lab</th><th class="num">Open issues</th><th>Oldest report</th></tr></thead>
+    <tbody>
+    {% for e in under_maintenance %}
+    <tr><td><a href="{{ url_for('equipment_detail', equipment_id=e.equipment_id) }}">{{ e.equipment_name }}</a> <span class="tag">{{ e.asset_tag }}</span></td>
+      <td>{{ e.lab_name }}</td><td class="num">{{ e.open_issues }}</td><td>{{ e.oldest_report|when }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="empty">Nothing is under maintenance.</p>{% endif %}
+</section>
+
+<section class="card">
+  <h2>Maintenance history for an instrument</h2>
+  <form method="get" class="inline">
+    <select name="equipment" required>
+      <option value="">Choose equipment…</option>
+      {% for e in equipment %}<option value="{{ e.equipment_id }}" {% if e.equipment_id == selected %}selected{% endif %}>{{ e.equipment_name }} ({{ e.asset_tag }})</option>{% endfor %}
+    </select>
+    <button class="secondary">Show history</button>
+  </form>
+  {% if selected %}
+    {% if history %}
+    <table>
+      <thead><tr><th>Reported</th><th>Issue</th><th>Action taken</th><th>Status</th><th>Reporter</th><th>Handler</th><th>Resolved</th></tr></thead>
+      <tbody>
+      {% for m in history %}
+      <tr><td>{{ m.reported_at|when }}</td><td>{{ m.issue }}</td><td>{{ m.action_taken or '—' }}</td>
+        <td><span class="badge {{ m.status }}">{{ m.status|replace('_', ' ') }}</span></td>
+        <td>{{ m.reporter }}</td><td>{{ m.handler or '—' }}</td><td>{{ m.resolved_at|when }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% else %}<p class="empty">No maintenance recorded for this item.</p>{% endif %}
+  {% endif %}
+</section>
+
+<section class="card">
+  <h2>Most frequently reserved instruments</h2>
+  <table>
+    <thead><tr><th>Equipment</th><th>Lab</th><th class="num">Approved/completed bookings</th><th class="num">Hours booked</th></tr></thead>
+    <tbody>
+    {% for e in popular %}
+    <tr><td>{{ e.equipment_name }} <span class="tag">{{ e.asset_tag }}</span></td><td>{{ e.lab_name }}</td>
+      <td class="num">{{ e.bookings }}</td><td class="num">{{ '%.1f'|format(e.hours_booked) }}</td></tr>
+    {% else %}
+    <tr><td colspan="4" class="empty">No equipment yet.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="card">
+  <h2>Reservation history by requester and instrument</h2>
+  <table>
+    <thead><tr><th>Requester</th><th>Equipment</th><th class="num">Requests</th><th class="num">Approved</th><th class="num">Completed</th><th class="num">Rejected/cancelled</th><th>Latest slot</th></tr></thead>
+    <tbody>
+    {% for r in by_requester %}
+    <tr><td>{{ r.requester }}<div class="muted small">{{ r.department }}</div></td><td>{{ r.equipment_name }} <span class="tag">{{ r.asset_tag }}</span></td>
+      <td class="num">{{ r.total_requests }}</td><td class="num">{{ r.approved }}</td><td class="num">{{ r.completed }}</td>
+      <td class="num">{{ r.rejected_or_cancelled }}</td><td>{{ r.latest_slot|when }}</td></tr>
+    {% else %}
+    <tr><td colspan="7" class="empty">No reservations yet.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="card">
+  <h2>Equipment by laboratory and category</h2>
+  <table>
+    <thead><tr><th>Laboratory</th><th>Category</th><th class="num">Items</th><th class="num">Active</th></tr></thead>
+    <tbody>
+    {% for row in by_lab %}
+    <tr><td>{{ row.lab_name }}<div class="muted small">{{ row.building }}, {{ row.room_no }}</div></td><td>{{ row.category_name }}</td>
+      <td class="num">{{ row.total_items }}</td><td class="num">{{ row.active_items }}</td></tr>
+    {% else %}
+    <tr><td colspan="4" class="empty">No equipment yet.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

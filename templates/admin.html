@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Administration</h1>
+  <a class="button" href="{{ url_for('equipment_new') }}">Add equipment</a>
+</div>
+<p class="muted">Labs and categories in use cannot be deleted, so equipment history stays intact. Retire equipment from its edit page instead of deleting it.</p>
+<div class="grid">
+  <section class="card">
+    <h2>Laboratories</h2>
+    <form method="post" action="{{ url_for('add_lab') }}" class="inline">
+      <input name="lab_name" required placeholder="Lab name" maxlength="100">
+      <input name="building" required placeholder="Building" maxlength="100">
+      <input name="room_no" required placeholder="Room" maxlength="20" class="short">
+      <button>Add</button>
+    </form>
+    <table>
+      <thead><tr><th>Lab</th><th>Location</th><th class="num">Items</th></tr></thead>
+      <tbody>
+      {% for l in labs %}
+      <tr><td><a href="{{ url_for('equipment_list', lab=l.lab_id) }}">{{ l.lab_name }}</a></td><td>{{ l.building }}, {{ l.room_no }}</td><td class="num">{{ l.items }}</td></tr>
+      {% else %}
+      <tr><td colspan="3" class="empty">No laboratories yet.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  <section class="card">
+    <h2>Categories</h2>
+    <form method="post" action="{{ url_for('add_category') }}" class="inline">
+      <input name="category_name" required placeholder="Category name" maxlength="100">
+      <button>Add</button>
+    </form>
+    <table>
+      <thead><tr><th>Category</th><th class="num">Items</th></tr></thead>
+      <tbody>
+      {% for c in categories %}
+      <tr><td><a href="{{ url_for('equipment_list', category=c.category_id) }}">{{ c.category_name }}</a></td><td class="num">{{ c.items }}</td></tr>
+      {% else %}
+      <tr><td colspan="2" class="empty">No categories yet.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+{% endblock %}

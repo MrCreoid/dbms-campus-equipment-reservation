@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="372" viewBox="0 0 680 372">
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="20" y="22" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#1f2933" text-anchor="start" xml:space="preserve">Two staff approve overlapping requests A and B for the same item at the same moment</text>
+<text x="165" y="52" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" fill="#4a5561" text-anchor="middle" xml:space="preserve">Without FOR UPDATE (hypothetical)</text>
+<rect x="15" y="64" width="300" height="34" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="165.0" y="83.88749999999999" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">A: check overlaps → 0 found</text>
+<rect x="15" y="106" width="300" height="34" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="165.0" y="125.88749999999999" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">B: check overlaps → 0 found</text>
+<rect x="15" y="148" width="300" height="34" rx="8" fill="#e3f1e6" stroke="#2b6a3a" stroke-width="1.4"/>
+<text x="165.0" y="167.8875" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">A: UPDATE A → approved, COMMIT</text>
+<rect x="15" y="190" width="300" height="34" rx="8" fill="#e3f1e6" stroke="#2b6a3a" stroke-width="1.4"/>
+<text x="165.0" y="209.8875" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">B: UPDATE B → approved, COMMIT</text>
+<rect x="15" y="232" width="300" height="34" rx="8" fill="#f7e2e2" stroke="#8a2f2f" stroke-width="1.4"/>
+<text x="165.0" y="251.8875" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">Result: two overlapping approved bookings</text>
+<text x="515" y="52" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">Actual code: SELECT … FOR UPDATE</text>
+<rect x="365" y="64" width="300" height="34" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="515.0" y="83.88749999999999" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">A: lock equipment row, check → 0</text>
+<rect x="365" y="106" width="300" height="34" rx="8" fill="#f8eee2" stroke="#a8641f" stroke-width="1.4"/>
+<text x="515.0" y="125.88749999999999" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">B: SELECT … FOR UPDATE → waits</text>
+<rect x="365" y="148" width="300" height="34" rx="8" fill="#e3f1e6" stroke="#2b6a3a" stroke-width="1.4"/>
+<text x="515.0" y="167.8875" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">A: UPDATE A → approved, COMMIT (lock freed)</text>
+<rect x="365" y="190" width="300" height="34" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="515.0" y="209.8875" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">B: resumes, check → 1 overlap found</text>
+<rect x="365" y="232" width="300" height="34" rx="8" fill="#e3f1e6" stroke="#2b6a3a" stroke-width="1.4"/>
+<text x="515.0" y="251.8875" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">B: ROLLBACK, flash overlap error</text>
+<line x1="340" y1="45" x2="340" y2="275" stroke="#c9d0d8" stroke-dasharray="4 4"/>
+<rect x="15" y="290" width="650" height="72" rx="8" fill="#f6f7f9" stroke="#c9d0d8" stroke-width="1.2"/>
+<text x="29" y="312" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">Observed in this project's own test run: with the lock, exactly one of the two requests was</text>
+<text x="29" y="329" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">approved. When the lock was removed temporarily (and a 0.5 s pause added to widen the race</text>
+<text x="29" y="346" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">window), both were approved — the double booking above. The lock was then restored.</text>
+</svg>

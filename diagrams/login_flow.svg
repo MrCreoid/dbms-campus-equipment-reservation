@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="470" viewBox="0 0 680 470">
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="20" y="24" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#1f3a4d" text-anchor="start" xml:space="preserve">Login: POST /login</text>
+<rect x="20" y="40" width="300" height="41" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="170.0" y="63.662499999999994" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">Form sends email + password</text>
+<polyline points="170,81 170,99" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="170,99 166.7,91.7 173.3,91.7" fill="#5b6775"/>
+<rect x="20" y="99" width="300" height="56" rx="8" fill="#f8eee2" stroke="#a8641f" stroke-width="1.4"/>
+<text x="170.0" y="122.39999999999999" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">SELECT user_id, password_hash</text>
+<text x="170.0" y="137.92499999999998" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">FROM users WHERE email = %s</text>
+<polyline points="170,155 170,173" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="170,173 166.7,165.7 173.3,165.7" fill="#5b6775"/>
+<rect x="20" y="173" width="300" height="41" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="170.0" y="196.66250000000002" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">check_password_hash(hash, password)</text>
+<polyline points="170,214 170,232" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="170,232 166.7,224.7 173.3,224.7" fill="#5b6775"/>
+<rect x="20" y="232" width="300" height="41" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="170.0" y="255.66250000000002" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">session.clear(); session['user_id'] = id</text>
+<polyline points="170,273 170,291" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="170,291 166.7,283.7 173.3,283.7" fill="#5b6775"/>
+<rect x="20" y="291" width="300" height="41" rx="8" fill="#e3f1e6" stroke="#2b6a3a" stroke-width="1.4"/>
+<text x="170.0" y="314.6625" font-family="Menlo, Consolas, monospace" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">redirect to / (dashboard)</text>
+<polyline points="320,172 345,172 345,400 320,400" fill="none" stroke="#8a2f2f" stroke-width="1.4" stroke-dasharray="4 3" stroke-linejoin="round"/>
+<rect x="20" y="380" width="300" height="40" rx="8" fill="#f7e2e2" stroke="#8a2f2f" stroke-width="1.4"/>
+<text x="170.0" y="402.88750000000005" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">no user / wrong password → flash 'Invalid email or password.'</text>
+<text x="350" y="290" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#8a2f2f" text-anchor="start" xml:space="preserve">no match</text>
+<text x="380" y="24" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#1f3a4d" text-anchor="start" xml:space="preserve">Every later request</text>
+<rect x="380" y="40" width="280" height="62" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="520.0" y="59.175" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">@app.before_request load_user()</text>
+<text x="520.0" y="74.025" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">g.user = SELECT ... FROM users</text>
+<text x="520.0" y="88.875" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">WHERE user_id = session id</text>
+<polyline points="520,102 520,122" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="520,122 516.7,114.7 523.3,114.7" fill="#5b6775"/>
+<rect x="380" y="124" width="280" height="48" rx="8" fill="#e6eef4" stroke="#2f5d7c" stroke-width="1.4"/>
+<text x="520.0" y="143.6" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#2f5d7c" text-anchor="middle" xml:space="preserve">@require(...roles) on the view</text>
+<text x="520.0" y="158.45" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">checks g.user and g.user['role']</text>
+<polyline points="520,172 520,196" fill="none" stroke="#5b6775" stroke-width="1.4" stroke-linejoin="round"/>
+<polygon points="520,196 516.7,188.7 523.3,188.7" fill="#5b6775"/>
+<rect x="380" y="198" width="85" height="70" rx="8" fill="#f7e2e2" stroke="#8a2f2f" stroke-width="1.4"/>
+<text x="422.5" y="221.7125" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">not logged</text>
+<text x="422.5" y="235.88750000000002" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">in → 302</text>
+<text x="422.5" y="250.0625" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">/login</text>
+<rect x="477" y="198" width="85" height="70" rx="8" fill="#f7e2e2" stroke="#8a2f2f" stroke-width="1.4"/>
+<text x="519.5" y="221.7125" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">wrong</text>
+<text x="519.5" y="235.88750000000002" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">role →</text>
+<text x="519.5" y="250.0625" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">abort(403)</text>
+<rect x="574" y="198" width="86" height="70" rx="8" fill="#e3f1e6" stroke="#2b6a3a" stroke-width="1.4"/>
+<text x="617.0" y="228.79999999999998" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">allowed →</text>
+<text x="617.0" y="242.975" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#1f2933" text-anchor="middle" xml:space="preserve">view runs</text>
+<rect x="380" y="290" width="280" height="130" rx="8" fill="#f6f7f9" stroke="#c9d0d8" stroke-width="1.2"/>
+<text x="394" y="312.0" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">Registration (POST /register)</text>
+<text x="394" y="329.5" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">• checks fields, '@' in email, len ≥ 8</text>
+<text x="394" y="347.0" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">• generate_password_hash(password)</text>
+<text x="394" y="364.5" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">• INSERT ... role = 'student' (fixed)</text>
+<text x="394" y="382.0" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">• duplicate email → IntegrityError</text>
+<text x="394" y="399.5" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="400" fill="#1f2933" text-anchor="start" xml:space="preserve">  → 'account already exists'</text>
+</svg>

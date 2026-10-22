@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Welcome, {{ g.user.name }}</h1>
+<div class="stats">
+  {% if g.user.role in ('lab_staff', 'admin') %}
+  <a class="stat" href="{{ url_for('equipment_list') }}"><strong>{{ counts.active_equipment }}</strong>Active equipment</a>
+  <a class="stat" href="{{ url_for('reservations') }}"><strong>{{ counts.pending_all }}</strong>Pending requests</a>
+  <a class="stat" href="{{ url_for('reservations') }}"><strong>{{ counts.upcoming_all }}</strong>Upcoming approved</a>
+  <a class="stat" href="{{ url_for('maintenance') }}"><strong>{{ counts.open_maintenance }}</strong>Open maintenance</a>
+  {% else %}
+  <a class="stat" href="{{ url_for('equipment_list') }}"><strong>{{ counts.active_equipment }}</strong>Active equipment</a>
+  <a class="stat" href="{{ url_for('reservations') }}"><strong>{{ counts.my_pending }}</strong>My pending requests</a>
+  <a class="stat" href="{{ url_for('reservations') }}"><strong>{{ counts.my_upcoming }}</strong>My upcoming bookings</a>
+  {% endif %}
+</div>
+
+<section class="card">
+  <div class="card-head">
+    <h2>My upcoming reservations</h2>
+    <a class="button" href="{{ url_for('equipment_list') }}">Book equipment</a>
+  </div>
+  {% if my_next %}
+  <table>
+    <thead><tr><th>Equipment</th><th>Start</th><th>End</th><th>Status</th></tr></thead>
+    <tbody>
+    {% for r in my_next %}
+    <tr>
+      <td><a href="{{ url_for('equipment_detail', equipment_id=r.equipment_id) }}">{{ r.equipment_name }}</a>
+        <span class="tag">{{ r.asset_tag }}</span></td>
+      <td>{{ r.start_time|when }}</td><td>{{ r.end_time|when }}</td>
+      <td><span class="badge {{ r.status }}">{{ r.status }}</span></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No upcoming reservations. Browse the equipment catalogue to request one.</p>
+  {% endif %}
+</section>
+{% endblock %}

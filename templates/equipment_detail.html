@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}{{ item.equipment_name }}{% endblock %}
+{% block content %}
+{% set staff = g.user.role in ('lab_staff', 'admin') %}
+<div class="page-head">
+  <div>
+    <a class="muted small" href="{{ url_for('equipment_list') }}">← Equipment</a>
+    <h1>{{ item.equipment_name }} <span class="tag">{{ item.asset_tag }}</span></h1>
+  </div>
+  {% if g.user.role == 'admin' %}<a class="button secondary" href="{{ url_for('equipment_edit', equipment_id=item.equipment_id) }}">Edit</a>{% endif %}
+</div>
+
+<div class="grid">
+  <section class="card">
+    <h2>Details</h2>
+    <dl class="details">
+      <dt>Category</dt><dd>{{ item.category_name }}</dd>
+      <dt>Laboratory</dt><dd>{{ item.lab_name }} — {{ item.building }}, {{ item.room_no }}</dd>
+      <dt>Status</dt><dd>
+        <span class="badge {{ item.status }}">{{ item.status }}</span>
+        {% if unresolved %}<span class="badge open">under maintenance</span>{% endif %}
+      </dd>
+      <dt>Purchased</dt><dd>{{ item.purchase_date or '—' }}</dd>
+      <dt>Notes</dt><dd>{{ item.details or '—' }}</dd>
+    </dl>
+  </section>
+
+  <section class="card">
+    <h2>Request a reservation</h2>
+    {% if bookable %}
+    <form method="post" action="{{ url_for('reservation_create') }}" class="stack">
+      <input type="hidden" name="equipment_id" value="{{ item.equipment_id }}">
+      <label>Start <input type="datetime-local" name="start_time" required></label>
+      <label>End <input type="datetime-local" name="end_time" required></label>
+      <label>Purpose <input name="purpose" maxlength="255" required placeholder="e.g. Signals lab assignment"></label>
+      <button>Submit request</button>
+    </form>
+    {% elif item.status == 'retired' %}
+    <p class="empty">This item is retired and cannot be booked.</p>
+    {% else %}
+    <p class="empty">This item has an unresolved maintenance issue and cannot be booked until it is fixed.</p>
+    {% endif %}
+  </section>
+</div>
+
+<section class="card">
+  <h2>Upcoming approved reservations</h2>
+  {% if upcoming %}
+  <table>
+    <thead><tr><th>Start</th><th>End</th><th>Requested by</th><th>Purpose</th>{% if staff %}<th></th>{% endif %}</tr></thead>
+    <tbody>
+    {% for r in upcoming %}
+    <tr>
+      <td>{{ r.start_time|when }}</td><td>{{ r.end_time|when }}</td><td>{{ r.requester }}</td><td>{{ r.purpose }}</td>
+      {% if staff %}
+      <td class="actions">
+        <form method="post" action="{{ url_for('reservation_cancel', reservation_id=r.reservation_id) }}">
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button class="danger small">Cancel</button>
+        </form>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No upcoming approved reservations.</p>
+  {% endif %}
+</section>
+
+<section class="card">
+  <div class="card-head"><h2>Maintenance history</h2></div>
+  {% if staff %}
+  <form method="post" action="{{ url_for('maintenance_report') }}" class="inline">
+    <input type="hidden" name="equipment_id" value="{{ item.equipment_id }}">
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <input name="issue" required placeholder="Describe a new issue with this item">
+    <button class="secondary">Report issue</button>
+  </form>
+  {% endif %}
+  {% if history %}
+  <table>
+    <thead><tr><th>Reported</th><th>Issue</th><th>Action taken</th><th>Status</th><th>Reported by</th><th>Handled by</th><th>Resolved</th></tr></thead>
+    <tbody>
+    {% for m in history %}
+    <tr>
+      <td>{{ m.reported_at|when }}</td><td>{{ m.issue }}</td><td>{{ m.action_taken or '—' }}</td>
+      <td><span class="badge {{ m.status }}">{{ m.status|replace('_', ' ') }}</span></td>
+      <td>{{ m.reporter }}</td><td>{{ m.handler or '—' }}</td><td>{{ m.resolved_at|when }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No maintenance has been recorded for this item.</p>
+  {% endif %}
+</section>
+{% endblock %}

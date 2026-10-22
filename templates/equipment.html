@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Equipment{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Equipment catalogue</h1>
+  {% if g.user.role == 'admin' %}<a class="button" href="{{ url_for('equipment_new') }}">Add equipment</a>{% endif %}
+</div>
+<form class="filters card" method="get">
+  <input type="search" name="q" value="{{ q }}" placeholder="Search name or asset tag">
+  <select name="lab">
+    <option value="">All labs</option>
+    {% for l in labs %}<option value="{{ l.lab_id }}" {% if l.lab_id == lab_id %}selected{% endif %}>{{ l.lab_name }}</option>{% endfor %}
+  </select>
+  <select name="category">
+    <option value="">All categories</option>
+    {% for c in categories %}<option value="{{ c.category_id }}" {% if c.category_id == category_id %}selected{% endif %}>{{ c.category_name }}</option>{% endfor %}
+  </select>
+  <button>Filter</button>
+  {% if q or lab_id or category_id %}<a href="{{ url_for('equipment_list') }}">Clear</a>{% endif %}
+</form>
+<section class="card">
+  {% if items %}
+  <table>
+    <thead><tr><th>Equipment</th><th>Asset tag</th><th>Category</th><th>Location</th><th>Status</th></tr></thead>
+    <tbody>
+    {% for e in items %}
+    <tr>
+      <td><a href="{{ url_for('equipment_detail', equipment_id=e.equipment_id) }}">{{ e.equipment_name }}</a></td>
+      <td><span class="tag">{{ e.asset_tag }}</span></td>
+      <td>{{ e.category_name }}</td>
+      <td>{{ e.lab_name }}<div class="muted small">{{ e.building }}, {{ e.room_no }}</div></td>
+      <td>
+        {% if e.status == 'retired' %}<span class="badge retired">retired</span>
+        {% elif e.under_maintenance %}<span class="badge open">under maintenance</span>
+        {% elif e.in_use %}<span class="badge pending">in use now</span>
+        {% else %}<span class="badge approved">available</span>{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">No equipment matches these filters.</p>
+  {% endif %}
+</section>
+{% endblock %}
