@@ -12,3 +12,18 @@
   <p class="muted">New student? <a href="{{ url_for('register') }}">Create an account</a></p>
 </section>
 {% endblock %}
+
+{% block demo_extra %}
+<ul class="demo-logins">
+  {% for role, email, password in demo_logins %}
+  <li>
+    <form method="post">
+      <input type="hidden" name="email" value="{{ email }}">
+      <input type="hidden" name="password" value="{{ password }}">
+      <button class="secondary small">Log in as {{ role }}</button>
+    </form>
+    <span class="tag">{{ email }} · {{ password }}</span>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -19,7 +19,7 @@
       <thead><tr><th>Lab</th><th>Location</th><th class="num">Items</th></tr></thead>
       <tbody>
       {% for l in labs %}
-      <tr><td><a href="{{ url_for('equipment_list', lab=l.lab_id) }}">{{ l.lab_name }}</a></td><td>{{ l.building }}, {{ l.room_no }}</td><td class="num">{{ l.items }}</td></tr>
+      <tr><td><a href="{{ url_for('equipment_list', lab=l.lab_id) }}">{{ l.lab_name }}</a></td><td>{{ l.building }}, {{ l.room_no }}</td><td class="num">{{ l['items'] }}</td></tr>
       {% else %}
       <tr><td colspan="3" class="empty">No laboratories yet.</td></tr>
       {% endfor %}
@@ -36,7 +36,7 @@
       <thead><tr><th>Category</th><th class="num">Items</th></tr></thead>
       <tbody>
       {% for c in categories %}
-      <tr><td><a href="{{ url_for('equipment_list', category=c.category_id) }}">{{ c.category_name }}</a></td><td class="num">{{ c.items }}</td></tr>
+      <tr><td><a href="{{ url_for('equipment_list', category=c.category_id) }}">{{ c.category_name }}</a></td><td class="num">{{ c['items'] }}</td></tr>
       {% else %}
       <tr><td colspan="2" class="empty">No categories yet.</td></tr>
       {% endfor %}

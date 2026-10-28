@@ -81,6 +81,9 @@ Open <http://127.0.0.1:5000>.
 | Student | `nina@campus.test` | `student12345` |
 | Student | `karan@campus.test` | `student12345` |
 
+Every page has a **For demo** toggle with a short presenter note about what that page shows and which
+rule it demonstrates; on the login page it also gives one-click logins for the three roles.
+
 Passwords are stored as Werkzeug hashes even for these accounts. Public registration always creates a **student**;
 staff and admin accounts only come from `seed.py` (or an admin inserting them directly in MySQL).
 

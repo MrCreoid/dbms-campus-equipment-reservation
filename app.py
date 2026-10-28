@@ -18,6 +18,50 @@ app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 STAFF = ("lab_staff", "admin")
 MAINTENANCE_ORDER = ["open", "in_progress", "resolved"]
 
+# Presenter crib notes, shown by the "For demo" toggle on every page (templates/base.html).
+DEMO_NOTES = {
+    "login": "Three demo logins are listed below, one per role. Student books equipment, lab staff "
+             "approves bookings and handles maintenance, admin also manages labs and categories. "
+             "Every page carries this For demo toggle. Passwords are hashed with Werkzeug; the "
+             "session cookie is SameSite=Lax, so cross-site form posts cannot ride along.",
+    "register": "Self-registration only ever creates a student. Staff and admin accounts are made by "
+                "the lab office, so the role cannot be chosen from the form.",
+    "dashboard": "Counts come from SQL aggregates, not Python loops. Staff and admin see lab-wide "
+                 "totals; a student sees only their own pending and upcoming bookings — the same "
+                 "template, filtered by role.",
+    "equipment_list": "Catalogue with filters on lab, category and status. Each filter is a WHERE "
+                      "clause built from request args with bound parameters, so there is no SQL "
+                      "injection surface. Open an item to book it.",
+    "equipment_detail": "Shows the item, its upcoming approved bookings and its maintenance history. "
+                        "Booking a slot checks for overlap inside a transaction, so two people cannot "
+                        "grab the same instrument.",
+    "equipment_new": "Lab and category are foreign keys, so an item can never point at a lab that "
+                     "does not exist.",
+    "equipment_edit": "Retire equipment here rather than deleting it; past reservations keep pointing "
+                      "at a real row.",
+    "reservations": "A student sees their own requests and can cancel them. Staff see every request "
+                    "and can approve, reject or complete one. Approval re-checks for overlap before "
+                    "committing, in case another booking landed in the meantime.",
+    "maintenance": "Staff log a fault against an item and walk it open to in progress to resolved. "
+                   "Backwards jumps are rejected in code, so the status history stays honest.",
+    "reports": "The analytics queries live in reports.sql, not in Python: joins, GROUP BY and "
+               "aggregates answering utilisation, busiest labs and repeat faults.",
+    "admin": "Labs and categories in use cannot be deleted — the foreign keys refuse it — which is "
+             "the point: referential integrity is enforced by the database, not by hope.",
+}
+
+DEMO_LOGINS = [
+    ("Student", "student@campus.test", "student12345"),
+    ("Lab staff", "staff@campus.test", "staff12345"),
+    ("Admin", "admin@campus.test", "admin12345"),
+]
+
+
+@app.context_processor
+def demo_context():
+    return {"demo_note": DEMO_NOTES.get(request.endpoint), "demo_logins": DEMO_LOGINS}
+
+
 
 def validate_slot(start, end, now):
     """Return an error message for an invalid booking time range, or None."""

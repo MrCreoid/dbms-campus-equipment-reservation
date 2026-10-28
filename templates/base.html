@@ -30,6 +30,13 @@
   {% endif %}
 </header>
 <main>
+  {% if demo_note %}
+  <details class="demo">
+    <summary>For demo</summary>
+    <p>{{ demo_note }}</p>
+    {% block demo_extra %}{% endblock %}
+  </details>
+  {% endif %}
   {% for category, message in get_flashed_messages(with_categories=true) %}
   <div class="flash {{ category }}">{{ message }}</div>
   {% endfor %}
