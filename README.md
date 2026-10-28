@@ -78,7 +78,7 @@ Open <http://127.0.0.1:5000>.
 | Lab staff | `staff@campus.test` | `staff12345` |
 | Lab staff | `meera.staff@campus.test` | `staff12345` |
 | Student | `student@campus.test` | `student12345` |
-| Student | `nina@campus.test` | `student12345` |
+| Student | `ananya@campus.test` | `student12345` |
 | Student | `karan@campus.test` | `student12345` |
 
 Every page has a **For demo** toggle with a short presenter note about what that page shows and which
@@ -284,8 +284,8 @@ Run with fresh demo data (re-import `schema.sql`, then `python seed.py`).
 - [ ] **Equipment:** as admin, add a lab, a category and an item. Adding the same asset tag twice is refused. Search "OSC" and filter by lab.
 - [ ] **Valid request:** as `student@campus.test`, open *Digital Multimeter* and request a slot tomorrow. It appears under *My requests* as *pending*.
 - [ ] **Invalid time:** request with end before start → "end time must be later". A past slot → "future time slot".
-- [ ] **Overlap:** request *PHY-OSC-001* overlapping Sam's approved booking (in 2 days, 10:00–12:00) → refused. As staff, approve Nina's seeded pending request for the same item → refused with the overlap message.
+- [ ] **Overlap:** request *PHY-OSC-001* overlapping Aarav's approved booking (in 2 days, 10:00–12:00) → refused. As staff, approve Ananya's seeded pending request for the same item → refused with the overlap message.
 - [ ] **Maintenance block:** *DC Power Supply* (open issue) and *He-Ne Laser Kit* (in progress) show "under maintenance" and have no booking form.
-- [ ] **Approve / reject / cancel / complete:** as staff, approve Nina's *PHY-OSC-002* request, reject Karan's GPU request. As a student, cancel your own pending request. A staff member's own request shows "Your request" with no approve button. After an approved booking's end time passes, *Mark returned* sets it to *completed*.
+- [ ] **Approve / reject / cancel / complete:** as staff, approve Ananya's *PHY-OSC-002* request, reject Karan's GPU request. As a student, cancel your own pending request. A staff member's own request shows "Your request" with no approve button. After an approved booking's end time passes, *Mark returned* sets it to *completed*.
 - [ ] **Maintenance ledger:** report an issue on *PHY-OSC-001* and see the warning about its upcoming approved booking. Move the record to *in progress*, then *resolved* with an action. The issue text is kept and the resolved date appears. The item becomes bookable again.
 - [ ] **History preserved:** rejected/cancelled/completed reservations still appear under *My requests* and in *Reports*. Retire an item from its edit page: it stays in the catalogue as *retired* with its history, and cannot be booked.

@@ -8,12 +8,12 @@ from db import get_connection
 
 USERS = [
     # name, email, password, department, role  (local demo credentials only)
-    ("Asha Admin", "admin@campus.test", "admin12345", "Lab Administration", "admin"),
-    ("Ravi Staff", "staff@campus.test", "staff12345", "Physics", "lab_staff"),
-    ("Meera Staff", "meera.staff@campus.test", "staff12345", "Electronics", "lab_staff"),
-    ("Sam Student", "student@campus.test", "student12345", "Computer Science", "student"),
-    ("Nina Student", "nina@campus.test", "student12345", "Electronics", "student"),
-    ("Karan Student", "karan@campus.test", "student12345", "Physics", "student"),
+    ("Asha Nair", "admin@campus.test", "admin12345", "Lab Administration", "admin"),
+    ("Ravi Deshmukh", "staff@campus.test", "staff12345", "Physics", "lab_staff"),
+    ("Meera Iyer", "meera.staff@campus.test", "staff12345", "Electronics", "lab_staff"),
+    ("Aarav Sharma", "student@campus.test", "student12345", "Computer Science", "student"),
+    ("Ananya Rao", "ananya@campus.test", "student12345", "Electronics", "student"),
+    ("Karan Mehta", "karan@campus.test", "student12345", "Physics", "student"),
 ]
 LABS = [
     ("Physics Lab 1", "Science Block", "S-101"),
@@ -66,7 +66,7 @@ def main():
             equipment_ids.append(cur.lastrowid)
 
         eq = dict(zip([e[0] for e in EQUIPMENT], equipment_ids))
-        sam, nina, karan = user_ids["student@campus.test"], user_ids["nina@campus.test"], user_ids["karan@campus.test"]
+        aarav, ananya, karan = user_ids["student@campus.test"], user_ids["ananya@campus.test"], user_ids["karan@campus.test"]
         staff = user_ids["staff@campus.test"]
         base = datetime.now().replace(minute=0, second=0, microsecond=0)
 
@@ -76,15 +76,15 @@ def main():
 
         reservations = [
             # equipment, requester, slot, purpose, status, reviewer
-            ("PHY-OSC-001", sam, slot(2, 10), "Signals lab assignment", "approved", staff),
+            ("PHY-OSC-001", aarav, slot(2, 10), "Signals lab assignment", "approved", staff),
             # Overlaps the approved booking above, so approving it demonstrates the conflict check.
-            ("PHY-OSC-001", nina, slot(2, 11), "Waveform measurements", "pending", None),
-            ("PHY-OSC-002", nina, slot(2, 11), "Waveform measurements", "pending", None),
+            ("PHY-OSC-001", ananya, slot(2, 11), "Waveform measurements", "pending", None),
+            ("PHY-OSC-002", ananya, slot(2, 11), "Waveform measurements", "pending", None),
             ("CMP-GPU-001", karan, slot(3, 14, 4), "Model training for mini project", "pending", None),
-            ("ELE-FG-001", sam, slot(4, 9), "Filter frequency response", "approved", staff),
+            ("ELE-FG-001", aarav, slot(4, 9), "Filter frequency response", "approved", staff),
             ("OPT-SPC-001", karan, slot(-5, 10), "Emission spectra experiment", "completed", staff),
-            ("CMP-RPI-001", sam, slot(-3, 13), "IoT sensor prototype", "completed", staff),
-            ("CMP-RPI-001", nina, slot(-2, 15), "Duplicate request", "rejected", staff),
+            ("CMP-RPI-001", aarav, slot(-3, 13), "IoT sensor prototype", "completed", staff),
+            ("CMP-RPI-001", ananya, slot(-2, 15), "Duplicate request", "rejected", staff),
             ("PHY-MM-001", karan, slot(1, 16), "Circuit debugging", "cancelled", None),
         ]
         for tag, requester, (start, end), purpose, status, reviewer in reservations:
